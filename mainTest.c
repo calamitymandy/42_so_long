@@ -5,7 +5,7 @@ int	main(void)
 	void	*mlx;
 	void	*mlx_win;
 	void	*img;
-	char	*relative_path = "./tumb.xpm";
+	char	*relative_path = "./mysticdoor.xpm";
 	int		img_width;
 	int		img_height;
 
