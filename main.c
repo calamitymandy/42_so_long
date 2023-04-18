@@ -36,7 +36,7 @@ void	init_struct(t_game *game)
 	game->window = 0;
 }
 
-int	exit_point(t_game *game)
+/*int	exit_point(t_game *game)
 {
 	int	line;
 
@@ -48,7 +48,7 @@ int	exit_point(t_game *game)
 		free(game->map[line++]);
 	free(game->map);
 	exit(0);
-}
+}*/
 
 /**
  * The main function initializes a game struct, reads a map file, checks for errors, creates a window,
@@ -70,14 +70,14 @@ int	main(int argc, char **argv)
 		return (0);
 	game = (t_game *)malloc(sizeof(t_game));
 	init_struct(game);
-	map_reading(game, argv);
-	check_errors(game);
+	read_map(game, argv);
+	/*check_errors(game);
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, (game->map_width * 40),
 			(game->map_height * 40), "solong");
 	place_images_in_game(game);
 	adding_in_graphics(game);
 	mlx_key_hook(game->window, controls_working, game);
-	mlx_hook(game->window, 17, 0, (void *)exit, 0);
+	mlx_hook(game->window, 17, 0, (void *)exit, 0);*/
 	mlx_loop(game->mlx);
 }

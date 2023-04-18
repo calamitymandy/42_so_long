@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <string.h>
+# include <stdlib.h>
 
 typedef struct s_game
 {
@@ -44,11 +45,11 @@ typedef struct s_game
 
 }	t_game;
 
-int		exit_point(t_game *game);
-int		map_reading(t_game *game, char **argv);
-int		controls_working(int command, t_game *game);
-void	adding_in_graphics(t_game *game);
-void	place_images_in_game(t_game *game);
-void	check_errors(t_game *game);
+//int		exit_point(t_game *game);
+int		read_map(t_game *game, char **argv);
+//int		controls_working(int command, t_game *game);
+//void	adding_in_graphics(t_game *game);
+//void	place_images_in_game(t_game *game);
+//void	check_errors(t_game *game);
 
 #endif
