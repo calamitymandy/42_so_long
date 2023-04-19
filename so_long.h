@@ -25,9 +25,9 @@ typedef struct s_game
 	int		fd;
 	int		map_height;
 	int		map_width;
-	int		playercount;
-	int		columncount;
-	int		exitcount;
+	int		perso_count;
+	int		column_count;
+	int		exit_count;
 	int		x_axis;
 	int		y_axis;
 	int		counter;
@@ -37,7 +37,7 @@ typedef struct s_game
 
 	void	*floor;
 	void	*barrier;
-	void	*player;
+	void	*perso;
 	void	*exit;
 	void	*item;
 	void	*mlx;
@@ -45,11 +45,11 @@ typedef struct s_game
 
 }	t_game;
 
-//int		exit_point(t_game *game);
+int		exit_point(t_game *game);
 int		read_map(t_game *game, char **argv);
+void	check_errors(t_game *game);
 //int		controls_working(int command, t_game *game);
 //void	adding_in_graphics(t_game *game);
 //void	place_images_in_game(t_game *game);
-//void	check_errors(t_game *game);
 
 #endif
