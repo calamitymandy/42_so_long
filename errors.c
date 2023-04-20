@@ -12,51 +12,31 @@
 
 #include "so_long.h"
 
-static int	vertical_wall(t_game *game)
+static int	walls_in_place(t_game *game)
 {
-	int	height;
-	int	width;
+	int	has_vertical_wall;
+	int	has_horizontal_wall;
+	int height;
+	int width;
 
+	has_vertical_wall = 1;
+	has_horizontal_wall = 1;
 	height = 0;
-	width = game->map_width;
-	while (height < game->map_height)
+	while (height < game->map_height && has_vertical_wall)
 	{
-		if (!(game->map[height][0] == '1'
-			&& game->map[height][width -1] == '1'))
-			return (0);
+		if (!(game->map[height][0] == '1' && game->map[height][game->map_height -1] == '1'))
+			has_vertical_wall = 0;
 		height++;
 	}
-	return (1);
-}
-
-static int	horizontal_wall(t_game *game)
-{
-	int	width;
-	int	height;
 
 	width = 0;
-	height = game->map_height;
-	while (width < game->map_width)
+	while (width < game->map_width && has_horizontal_wall)
 	{
-		if (!(game->map[0][width] == '1' && game->map[height -1][width] == '1'))
-			return (0);
+		if(!(game->map[0][width] == '1' && game->map[game->map_width -1][width] == '1'))
+			has_horizontal_wall = 0;
 		width++;
 	}
-	return (1);
-}
-
-static void	walls_in_place(t_game *game)
-{
-	int	horizontal_walls;
-	int	vertical_walls;
-
-	horizontal_walls = horizontal_wall(game);
-	vertical_walls = vertical_wall(game);
-	if (!horizontal_walls || !vertical_walls)
-	{
-		printf("/nERROR: No walls in this map\n");
-		exit_point(game);
-	}
+	return (has_vertical_wall && has_horizontal_wall);
 }
 
 static void	check_count(t_game *game, int height, int width)
@@ -105,6 +85,10 @@ void	valid_perso(t_game *game)
 
 void	check_errors(t_game *game)
 {
-	walls_in_place(game);
+	if (!walls_in_place)
+	{
+		printf("/nERROR: No walls in this map\n");
+		exit_point(game);
+	}
 	valid_perso(game);
 }
