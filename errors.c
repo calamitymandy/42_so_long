@@ -107,4 +107,11 @@ void	check_errors(t_game *game)
 		exit_point(game);
 	}
 	valid_perso(game);
+	// TODO!!!!! Check if all rows have the same length
+	// for (int i = 1; i < game->map_height; i++) {
+	// 	if (strlen(game->map[i]) != strlen(game->map[i - 1])) {
+	// 		printf("\nERROR: Map is not a rectangle\n");
+	// 		exit_point(game);
+	// 	}
+	// }
 }
