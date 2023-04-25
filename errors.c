@@ -38,44 +38,35 @@ static int	horizontal_wall(t_game *game)
 	height = game->map_height;
 	while (width < game->map_width)
 	{
-		if (!(game->map[0][width] == '1' && game->map[height -1][width] == '1'))
+		if (!(game->map[0][width] == '1'
+			&& game->map[height -1][width] == '1'))
 			return (0);
 		width++;
 	}
 	return (1);
 }
 
-static void	walls_in_place(t_game *game)
-{
-	int	horizontal_walls;
-	int	vertical_walls;
-
-	horizontal_walls = horizontal_wall(game);
-	vertical_walls = vertical_wall(game);
-	if (!horizontal_walls || !vertical_walls)
-	{
-		printf("/nERROR: No walls in this map\n");
-		exit_point(game);
-	}
-}
-
+/**
+ * The function checks the validity of characters in a game map and counts the number of 'P', 'C', and
+ * 'E' characters.
+ */
 static void	check_count(t_game *game, int height, int width)
 {
-	if (game->map[width][height] != '1' &&
-		game->map[width][height] != '0' &&
-		game->map[width][height] != 'P' &&
-		game->map[width][height] != 'C' &&
-		game->map[width][height] != 'E' &&
-		game->map[width][height] != '\n')
+	if (game->map[height][width] != '1' &&
+		game->map[height][width] != '0' &&
+		game->map[height][width] != 'P' &&
+		game->map[height][width] != 'C' &&
+		game->map[height][width] != 'E' &&
+		game->map[height][width] != '\n')
 	{
-		printf("\nNot allowed: %c\n", game->map[width][height]);
+		printf("Not allowed: %c\n", game->map[height][width]);
 		exit_point(game);
 	}
-	if (game->map[width][height] == 'P')
+	if (game->map[height][width] == 'P')
 		game->perso_count++;
-	if (game->map[width][height] == 'C')
-		game->column_count++;
-	if (game->map[width][height] == 'E')
+	if (game->map[height][width] == 'C')
+		game->item_count++;
+	if (game->map[height][width] == 'E')
 		game->exit_count++;
 }
 
@@ -88,23 +79,32 @@ void	valid_perso(t_game *game)
 	while (height < game->map_height -1)
 	{
 		width = 0;
-		while (width < game->map_width -1)
+		while (width <= game->map_width)
 		{
 			check_count(game, height, width);
 			width++;
 		}
 		height++;
 	}
-	if (!(game->perso_count == 1 && game->column_count > 1
+	if (!(game->perso_count == 1 && game->item_count >= 1
 			&& game->exit_count == 1))
 	{
-		printf("\nERROR: perso, item or exit is wrong\n");
+		printf("ERROR: perso, item or exit is wrong\n");
 		exit_point(game);
 	}
 }
 
 void	check_errors(t_game *game)
 {
-	walls_in_place(game);
+	int	horizontal_walls;
+	int	vertical_walls;
+
+	horizontal_walls = horizontal_wall(game);
+	vertical_walls = vertical_wall(game);
+	if (!horizontal_walls || !vertical_walls)
+	{
+		printf("ERROR: No walls in this map\n");
+		exit_point(game);
+	}
 	valid_perso(game);
 }

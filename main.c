@@ -18,7 +18,7 @@ void	init_struct(t_game *game)
 	game->map_height = 0;
 	game->map_width = 0;
 	game->perso_count = 0;
-	game->column_count = 0;
+	game->item_count = 0;
 	game->exit_count = 0;
 	game->x_axis = 0;
 	game->y_axis = 0;
@@ -38,7 +38,7 @@ void	init_struct(t_game *game)
 
 int	exit_point(t_game *game)
 {
-	int	line;
+	// int	line;
 
 	// line = 0;
 	// if (game->window)

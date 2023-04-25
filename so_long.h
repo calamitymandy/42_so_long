@@ -19,6 +19,8 @@
 # include <errno.h>
 # include <string.h>
 # include <stdlib.h>
+# include <mlx.h>
+# include "get_next_line.h"
 
 typedef struct s_game
 {
@@ -26,7 +28,7 @@ typedef struct s_game
 	int		map_height;
 	int		map_width;
 	int		perso_count;
-	int		column_count;
+	int		item_count;
 	int		exit_count;
 	int		x_axis;
 	int		y_axis;
