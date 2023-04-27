@@ -6,7 +6,7 @@
 /*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:15:34 by amdemuyn          #+#    #+#             */
-/*   Updated: 2023/04/12 14:27:53 by amdemuyn         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:39:25 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ void	init_struct(t_game *game)
 	game->y_axis = 0;
 	game->counter = 0;
 	game->items = 0;
-
 	game->map = NULL;
-
 	game->floor = 0;
 	game->wall = 0;
 	game->perso = 0;
@@ -74,7 +72,7 @@ int	main(int argc, char **argv)
 	check_errors(game);
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, (game->map_width * 40),
-				(game->map_height * 40), "solong");
+			(game->map_height * 40), "solong");
 	put_images(game);
 	add_graphics(game);
 	// mlx_key_hook(game->window, controls_working, game);
