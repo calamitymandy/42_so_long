@@ -28,7 +28,7 @@ void	init_struct(t_game *game)
 	game->map = NULL;
 
 	game->floor = 0;
-	game->barrier = 0;
+	game->wall = 0;
 	game->perso = 0;
 	game->exit = 0;
 	game->item = 0;
@@ -38,14 +38,14 @@ void	init_struct(t_game *game)
 
 int	exit_point(t_game *game)
 {
-	// int	line;
+	int	line;
 
-	// line = 0;
-	// if (game->window)
-	// 	mlx_destroy_window(game->mlx, game->window);
-	// free(game->mlx);
-	// while (line < game->map_height - 1)
-	// 	free(game->map[line++]);
+	line = 0;
+	if (game->window)
+		mlx_destroy_window(game->mlx, game->window);
+	free(game->mlx);
+	while (line < game->map_height - 1)
+		free(game->map[line++]);
 	free(game->map);
 	exit(0);
 }
@@ -73,10 +73,10 @@ int	main(int argc, char **argv)
 	read_map(game, argv);
 	check_errors(game);
 	game->mlx = mlx_init();
-	// game->window = mlx_new_window(game->mlx, (game->map_width * 40),
-	// 		(game->map_height * 40), "solong");
-	// place_images_in_game(game);
-	// adding_in_graphics(game);
+	game->window = mlx_new_window(game->mlx, (game->map_width * 40),
+				(game->map_height * 40), "solong");
+	put_images(game);
+	add_graphics(game);
 	// mlx_key_hook(game->window, controls_working, game);
 	// mlx_hook(game->window, 17, 0, (void *)exit, 0);*/
 	mlx_loop(game->mlx);
