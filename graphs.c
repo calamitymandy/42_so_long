@@ -12,6 +12,15 @@
 
 #include "so_long.h"
 
+void	put_perso(t_game *game, int height, int width)
+{
+	mlx_put_image_to_window(game->mlx, game->window, game->perso, width * 40,
+	height * 40);
+	game->x_axis = height;
+	game->y_axis = width;
+
+}
+
 void	put_images(t_game *game)
 {
 	int	width;
@@ -21,6 +30,8 @@ void	put_images(t_game *game)
 			&height);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "stone.xpm", &width,
 			&height);
+	game->perso = mlx_xpm_file_to_image(game->mlx, "ostrich.xpm", &width,
+		&height);
 }
 
 void	add_graphics(t_game *game)
@@ -40,6 +51,8 @@ void	add_graphics(t_game *game)
 			if (game->map[height][width] == '1')
 				mlx_put_image_to_window(game->mlx, game->window,
 					game->wall, width * 40, height * 40);
+			if (game->map[height][width] == 'P')
+				put_perso(game, height, width);
 			width++;
 		}
 		height++;
