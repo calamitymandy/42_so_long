@@ -71,8 +71,8 @@ int	main(int argc, char **argv)
 	read_map(game, argv);
 	check_errors(game);
 	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx, (game->map_width * 40),
-			(game->map_height * 40), "solong");
+	game->window = mlx_new_window(game->mlx, (game->map_width * 60),
+			(game->map_height * 60), "solong");
 	put_images(game);
 	add_graphics(game);
 	// mlx_key_hook(game->window, controls_working, game);

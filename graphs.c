@@ -14,11 +14,10 @@
 
 void	put_perso(t_game *game, int height, int width)
 {
-	mlx_put_image_to_window(game->mlx, game->window, game->perso, width * 40,
-	height * 40);
+	mlx_put_image_to_window(game->mlx, game->window, game->perso, width * 60,
+	height * 60);
 	game->x_axis = height;
 	game->y_axis = width;
-
 }
 
 void	put_images(t_game *game)
@@ -26,11 +25,13 @@ void	put_images(t_game *game)
 	int	width;
 	int	height;
 
-	game->floor = mlx_xpm_file_to_image(game->mlx, "floor_1.xpm", &width,
+	game->floor = mlx_xpm_file_to_image(game->mlx, "sand.xpm", &width,
 			&height);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "stone.xpm", &width,
 			&height);
-	game->perso = mlx_xpm_file_to_image(game->mlx, "ostrich.xpm", &width,
+	game->perso = mlx_xpm_file_to_image(game->mlx, "ostrichXbackground.xpm", &width,
+		&height);
+	game->exit = mlx_xpm_file_to_image(game->mlx, "holeXbackground.xpm", &width,
 		&height);
 }
 
@@ -47,12 +48,15 @@ void	add_graphics(t_game *game)
 		{
 			if (game->map[height][width] == '0')
 				mlx_put_image_to_window(game->mlx, game->window,
-					game->floor, width * 40, height * 40);
+					game->floor, width * 60, height * 60);
 			if (game->map[height][width] == '1')
 				mlx_put_image_to_window(game->mlx, game->window,
-					game->wall, width * 40, height * 40);
+					game->wall, width * 60, height * 60);
 			if (game->map[height][width] == 'P')
 				put_perso(game, height, width);
+			if (game->map[height][width] == 'E')
+				mlx_put_image_to_window(game->mlx, game->window,
+					game->exit, width * 60, height * 60);
 			width++;
 		}
 		height++;
