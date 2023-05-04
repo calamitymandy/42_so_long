@@ -34,7 +34,7 @@ void	init_struct(t_game *game)
 	game->window = 0;
 }
 
-int	exit_point(t_game *game)
+int	exit_window(t_game *game)
 {
 	int	line;
 
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 			(game->map_height * 60), "solong");
 	put_images(game);
 	add_graphics(game);
-	// mlx_key_hook(game->window, controls_working, game);
+	mlx_key_hook(game->window, controls, game);
 	// mlx_hook(game->window, 17, 0, (void *)exit, 0);*/
 	mlx_loop(game->mlx);
 }

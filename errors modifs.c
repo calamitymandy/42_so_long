@@ -49,7 +49,7 @@ static void	check_count(t_game *game, int height, int width)
 		game->map[width][height] != '\n')
 	{
 		printf("\nNot allowed: %c\n", game->map[width][height]);
-		exit_point(game);
+		exit_window(game);
 	}
 	if (game->map[width][height] == 'P')
 		game->perso_count++;
@@ -79,7 +79,7 @@ void	valid_perso(t_game *game)
 			&& game->exit_count == 1))
 	{
 		printf("\nERROR: perso, item or exit is wrong\n");
-		exit_point(game);
+		exit_window(game);
 	}
 }
 
@@ -88,14 +88,14 @@ void	check_errors(t_game *game)
 	if (!walls_in_place(game))
 	{
 		printf("/nERROR: No walls in this map\n");
-		exit_point(game);
+		exit_window(game);
 	}
 	valid_perso(game);
 	// TODO!!!!! Check if all rows have the same length
 	// for (int i = 1; i < game->map_height; i++) {
 	// 	if (strlen(game->map[i]) != strlen(game->map[i - 1])) {
 	// 		printf("\nERROR: Map is not a rectangle\n");
-	// 		exit_point(game);
+	// 		exit_window(game);
 	// 	}
 	// }
 }

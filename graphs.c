@@ -12,6 +12,13 @@
 
 #include "so_long.h"
 
+void	put_items(t_game *game, int height, int width)
+{
+	mlx_put_image_to_window(game->mlx, game->window, game->item, width * 60,
+	height * 60);
+	game->items++;
+}
+
 void	put_perso(t_game *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlx, game->window, game->perso, width * 60,
@@ -29,10 +36,12 @@ void	put_images(t_game *game)
 			&height);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "stone.xpm", &width,
 			&height);
-	game->perso = mlx_xpm_file_to_image(game->mlx, "ostrichXbackground.xpm", &width,
-		&height);
-	game->exit = mlx_xpm_file_to_image(game->mlx, "holeXbackground.xpm", &width,
-		&height);
+	game->perso = mlx_xpm_file_to_image(game->mlx, "ostrichXbackground.xpm",
+		&width, &height);
+	game->item = mlx_xpm_file_to_image(game->mlx, "tumb.xpm", &width,
+			&height);
+	game->exit = mlx_xpm_file_to_image(game->mlx, "holeXbackground.xpm",
+		&width, &height);
 }
 
 void	add_graphics(t_game *game)
@@ -40,6 +49,7 @@ void	add_graphics(t_game *game)
 	int	height;
 	int	width;
 
+	game->items = 0;
 	height = 0;
 	while (height < game->map_height)
 	{
@@ -54,6 +64,8 @@ void	add_graphics(t_game *game)
 					game->wall, width * 60, height * 60);
 			if (game->map[height][width] == 'P')
 				put_perso(game, height, width);
+			if (game->map[height][width] == 'C')
+				put_items(game, height, width);
 			if (game->map[height][width] == 'E')
 				mlx_put_image_to_window(game->mlx, game->window,
 					game->exit, width * 60, height * 60);

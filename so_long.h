@@ -47,11 +47,11 @@ typedef struct s_game
 
 }	t_game;
 
-int		exit_point(t_game *game);
+int		exit_window(t_game *game);
 int		read_map(t_game *game, char **argv);
 void	check_errors(t_game *game);
 void	put_images(t_game *game);
 void	add_graphics(t_game *game);
-//int		controls_working(int command, t_game *game);
+int		controls(int command, t_game *game);
 
 #endif
