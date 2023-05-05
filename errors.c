@@ -12,6 +12,20 @@
 
 #include "so_long.h"
 
+// static int	map_is_rectangle(t_game *game)
+// {
+// 	TODO
+// 	int i = 0;
+//     unsigned long first_row_len = strlen(game->map[0]);
+//     while (game->map[i]) {
+//         if (strlen(game->map[i]) != first_row_len) {
+//             return 0;
+//         }
+//         i++;
+//     }
+//     return 1;
+// }
+
 static int	check_walls(t_game *game, int height, int width)
 {
 	while (width < game->map_width)
@@ -31,42 +45,9 @@ static int	check_walls(t_game *game, int height, int width)
 	return (1);
 }
 
-// static int	vertical_wall(t_game *game)
-// {
-// 	int	height;
-// 	int	width;
-
-// 	height = 0;
-// 	width = game->map_width;
-// 	while (height < game->map_height)
-// 	{
-// 		if (!(game->map[height][0] == '1'
-// 			&& game->map[height][width -1] == '1'))
-// 			return (0);
-// 		height++;
-// 	}
-// 	return (1);
-// }
-
-// static int	horizontal_wall(t_game *game)
-// {
-// 	int	width;
-// 	int	height;
-
-// 	width = 0;
-// 	height = game->map_height;
-// 	while (width < game->map_width)
-// 	{
-// 		if (!(game->map[0][width] == '1'
-// 			&& game->map[height -1][width] == '1'))
-// 			return (0);
-// 		width++;
-// 	}
-// 	return (1);
-// }
-
 /**
- * The function checks the validity of characters in a game map and counts the number of 'P', 'C', and
+ * The function checks the validity of characters in a game map 
+ * and counts the number of 'P', 'C', and
  * 'E' characters.
  */
 static void	check_count(t_game *game, int height, int width)
@@ -118,9 +99,12 @@ void	check_errors(t_game *game)
 	int	height;
 	int	width;
 	int	walls;
+	int	i;
 
 	height = 0;
 	width = 0;
+	i = 1;
+	// map_is_rectangle(game);
 	walls = check_walls(game, height, width);
 	if (!walls)
 	{
@@ -128,33 +112,62 @@ void	check_errors(t_game *game)
 		exit_window(game);
 	}
 	valid_perso(game);
-    // TODO!!!!! Check if all rows have the same length
-    // for (int i = 1; i < game->map_height; i++) {
-    //  if (strlen(game->map[i]) != strlen(game->map[i - 1])) {
-    //      printf("\nERROR: Map is not a rectangle\n");
-    //      exit_window(game);
-    //  }
-    // }
 }
 
-// void	check_errors(t_game *game)
-// {
-// 	int	horizontal_walls;
-// 	int	vertical_walls;
+/*
+static int	vertical_wall(t_game *game)
+{
+	int	height;
+	int	width;
 
-// 	horizontal_walls = horizontal_wall(game);
-// 	vertical_walls = vertical_wall(game);
-// 	if (!horizontal_walls || !vertical_walls)
-// 	{
-// 		printf("ERROR: No walls in this map\n");
-// 		exit_window(game);
-// 	}
-// 	valid_perso(game);
-// 	// TODO!!!!! Check if all rows have the same length
-// 	// for (int i = 1; i < game->map_height; i++) {
-// 	// 	if (strlen(game->map[i]) != strlen(game->map[i - 1])) {
-// 	// 		printf("\nERROR: Map is not a rectangle\n");
-// 	// 		exit_window(game);
-// 	// 	}
-// 	// }
-// }
+	height = 0;
+	width = game->map_width;
+	while (height < game->map_height)
+	{
+		if (!(game->map[height][0] == '1'
+			&& game->map[height][width -1] == '1'))
+			return (0);
+		height++;
+	}
+	return (1);
+}
+
+static int	horizontal_wall(t_game *game)
+{
+	int	width;
+	int	height;
+
+	width = 0;
+	height = game->map_height;
+	while (width < game->map_width)
+	{
+		if (!(game->map[0][width] == '1'
+			&& game->map[height -1][width] == '1'))
+			return (0);
+		width++;
+	}
+	return (1);
+}
+
+void	check_errors(t_game *game)
+{
+	int	horizontal_walls;
+	int	vertical_walls;
+
+	horizontal_walls = horizontal_wall(game);
+	vertical_walls = vertical_wall(game);
+	if (!horizontal_walls || !vertical_walls)
+	{
+		printf("ERROR: No walls in this map\n");
+		exit_window(game);
+	}
+	valid_perso(game);
+	// TODO!!!!! Check if all rows have the same length
+	// for (int i = 1; i < game->map_height; i++) {
+	// 	if (strlen(game->map[i]) != strlen(game->map[i - 1])) {
+	// 		printf("\nERROR: Map is not a rectangle\n");
+	// 		exit_window(game);
+	// 	}
+	// }
+}
+*/
