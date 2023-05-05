@@ -12,23 +12,23 @@
 
 #include "so_long.h"
 
-static int check_walls(t_game *game, int height, int width)
+static int	check_walls(t_game *game, int height, int width)
 {
-    while (width < game->map_width)
-    {
-        if (!(game->map[0][width] == '1'
-            && game->map[game->map_height - 1][width] == '1'))
-            return (0);
-        width++;
-    }
-    while (height < game->map_height)
-    {
-        if (!(game->map[height][0] == '1'
-            && game->map[height][game->map_width - 1] == '1'))
-            return (0);
-        height++;
-    }
-    return (1);
+	while (width < game->map_width)
+	{
+		if (!(game->map[0][width] == '1'
+			&& game->map[game->map_height - 1][width] == '1'))
+			return (0);
+		width++;
+	}
+	while (height < game->map_height)
+	{
+		if (!(game->map[height][0] == '1'
+			&& game->map[height][game->map_width - 1] == '1'))
+			return (0);
+		height++;
+	}
+	return (1);
 }
 
 // static int	vertical_wall(t_game *game)
@@ -113,21 +113,21 @@ void	valid_perso(t_game *game)
 	}
 }
 
-void check_errors(t_game *game)
+void	check_errors(t_game *game)
 {
-    int height;
-    int width;
-    int walls;
+	int	height;
+	int	width;
+	int	walls;
 
-    height = 0;
-    width = 0;
-    walls = check_walls(game, height, width);
-    if (!walls)
-    {
-        printf("ERROR: No correct walls in this map\n");
-        exit_window(game);
-    }
-    valid_perso(game);
+	height = 0;
+	width = 0;
+	walls = check_walls(game, height, width);
+	if (!walls)
+	{
+		printf("ERROR: No correct walls in this map\n");
+		exit_window(game);
+	}
+	valid_perso(game);
     // TODO!!!!! Check if all rows have the same length
     // for (int i = 1; i < game->map_height; i++) {
     //  if (strlen(game->map[i]) != strlen(game->map[i - 1])) {
@@ -136,7 +136,6 @@ void check_errors(t_game *game)
     //  }
     // }
 }
-
 
 // void	check_errors(t_game *game)
 // {
