@@ -21,7 +21,7 @@
 3 Render
   - analyse map and print the elements mlx_put_image_to_window()
 
-4 Keyboard interaction
+4 keyboard interaction
   - mlx_key_hook(), choose a function to implement ft_event_key():
         - insert code to validate if the action is ok and if the character
           can move

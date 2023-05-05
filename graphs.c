@@ -23,8 +23,8 @@ void	put_perso(t_game *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlx, game->window, game->perso, width * 60,
 	height * 60);
-	game->x_axis = height;
-	game->y_axis = width;
+	game->y_axis = height;
+	game->x_axis = width;
 }
 
 void	put_images(t_game *game)

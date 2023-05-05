@@ -76,6 +76,6 @@ int	main(int argc, char **argv)
 	put_images(game);
 	add_graphics(game);
 	mlx_key_hook(game->window, controls, game);
-	// mlx_hook(game->window, 17, 0, (void *)exit, 0);*/
+	mlx_hook(game->window, 17, 0, (void *)exit, 0);
 	mlx_loop(game->mlx);
 }
