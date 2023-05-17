@@ -54,7 +54,7 @@ static void	check_count(t_game *game, int height, int width)
 	if (game->map[width][height] == 'P')
 		game->perso_count++;
 	if (game->map[width][height] == 'C')
-		game->column_count++;
+		game->item_count++;
 	if (game->map[width][height] == 'E')
 		game->exit_count++;
 }
@@ -75,7 +75,7 @@ void	valid_perso(t_game *game)
 		}
 		height++;
 	}
-	if (!(game->perso_count == 1 && game->column_count > 1
+	if (!(game->perso_count == 1 && game->item_count > 1
 			&& game->exit_count == 1))
 	{
 		printf("\nERROR: perso, item or exit is wrong\n");

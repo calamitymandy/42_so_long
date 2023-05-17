@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int	find_width(char *str)
+int	find_width(char *str)
 {
 	int	width;
 
@@ -65,13 +65,44 @@ int	read_map(t_game *game, char **argv)
 	game->fd = open(argv[1], O_RDONLY);
 	if (game->fd < 0)
 		return (0);
+	/* `while (1)` is an infinite loop that continues to execute until it is explicitly broken out of
+	using a `break` statement. In this case, it is being used to read the contents of a file line by
+	line until there are no more lines to read. */
 	while (1)
 	{
+		/* This code block is reading the contents of a file line by line using the `get_next_line` function
+		and adding each line to the game map using the `add_line` function. It continues to read and add
+		lines until there are no more lines to read, at which point it breaks out of the loop. If there is
+		an error adding a line to the map, the loop also breaks. */
 		reading = get_next_line(game->fd);
 		if (!add_line(game, reading))
 			break ;
 	}
+	if (game->map_height == 0 && game->map_width == 0)
+	{
+		printf("ERROR: empty map\n");
+		exit_window(game);
+	}
 	close (game->fd);
-	game->map_width = find_width(game->map[0]);
+	//game->map_width = find_width(game->map[0]);
 	return (1);
+}
+
+void	valid_map(char *map_name, char *ext)
+{
+	int	i;
+	int	j;
+
+	i = ft_strlen(map_name) - ft_strlen(ext);
+	j = 0;
+	while (map_name[i + j] && ext[j])
+	{
+		if (map_name[i + j] == ext[j])
+			j++;
+		else
+		{
+			printf("ERROR: file extension must be: .ber\n");
+			exit(1);
+		}
+	}
 }

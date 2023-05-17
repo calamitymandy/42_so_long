@@ -66,7 +66,10 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (0);
+	valid_map(argv[1], ".ber");
 	game = (t_game *)malloc(sizeof(t_game));
+	if (game == NULL)
+		return (0);
 	init_struct(game);
 	read_map(game, argv);
 	check_errors(game);

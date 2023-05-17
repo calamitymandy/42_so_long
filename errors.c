@@ -12,19 +12,25 @@
 
 #include "so_long.h"
 
-// static int	map_is_rectangle(t_game *game)
-// {
-// 	TODO
-// 	int i = 0;
-//     unsigned long first_row_len = strlen(game->map[0]);
-//     while (game->map[i]) {
-//         if (strlen(game->map[i]) != first_row_len) {
-//             return 0;
-//         }
-//         i++;
-//     }
-//     return 1;
-// }
+void	map_is_rectangle(t_game *game)
+{
+	int	i;
+	int	width_of_line;
+
+	i = 1;
+	game->map_width = find_width(game->map[0]);
+	while (game->map[i])
+	{
+		width_of_line = find_width(game->map[i]);
+		if (width_of_line != game->map_width)
+		{
+			printf("ERROR: map is not a rectangle\n");
+			exit_window(game);
+		}
+		//game->map_width = find_width(game->map[i]);
+		i++;
+	}
+}
 
 static int	check_walls(t_game *game, int height, int width)
 {
@@ -99,12 +105,10 @@ void	check_errors(t_game *game)
 	int	height;
 	int	width;
 	int	walls;
-	int	i;
 
 	height = 0;
 	width = 0;
-	i = 1;
-	// map_is_rectangle(game);
+	map_is_rectangle(game);
 	walls = check_walls(game, height, width);
 	if (!walls)
 	{
