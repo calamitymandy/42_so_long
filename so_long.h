@@ -34,6 +34,11 @@ typedef struct s_game
 	int		y_axis;
 	int		counter;
 	int		items;
+// added 4 counters for itinerary
+	int		itinerary_exit;
+	int		itinerary_items;
+	int		itinerary_perso_x;
+	int		itinerary_perso_y;
 
 	char	**map;
 
@@ -48,10 +53,10 @@ typedef struct s_game
 }	t_game;
 
 int		exit_window(t_game *game);
-
 int		read_map(t_game *game, char **argv);
 void	check_errors(t_game *game);
 void	valid_map(char *map, char *ext);
+void	map_copy(t_game *game, char **map);
 void	map_is_rectangle(t_game *game);
 int		find_width(char *str);
 void	put_images(t_game *game);

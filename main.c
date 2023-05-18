@@ -24,6 +24,12 @@ void	init_struct(t_game *game)
 	game->y_axis = 0;
 	game->counter = 0;
 	game->items = 0;
+	// added 4 counters for itinerary
+	game->itinerary_exit = 0;
+	game->itinerary_items = 0;
+	game->itinerary_perso_x = 1;
+	game->itinerary_perso_y = 1;
+	//
 	game->map = NULL;
 	game->floor = 0;
 	game->wall = 0;
@@ -49,16 +55,13 @@ int	exit_window(t_game *game)
 }
 
 /**
- * The main function initializes a game struct, reads a map file, checks for errors, creates a window,
- * places images, adds graphics, sets up controls, and starts the game loop.
+ * Initializes and runs a game using the mlx library based on a valid map file
+ * provided as a command line argument.
+ * argv[1] is expected to contain the name of a file with a ".ber" extension, 
+ * which will be used as the map for the game.
  * 
- * @param argc The number of arguments passed to the program, including the name of the program itself.
- * @param argv The argv parameter is a pointer to an array of characters that represent the
- * command-line arguments passed to the program. In this specific code, it is used to read the name of
- * the map file that the game will use.
- * 
- * @return If the number of arguments passed to the program is not 2, then 0 is being returned.
- * Otherwise, the program runs and does not return anything.
+ * If the number of arguments passed to the program is not 2, then 0 is returned.
+ * If the allocation of memory for the game struct fails, then 0 is returned.
  */
 int	main(int argc, char **argv)
 {

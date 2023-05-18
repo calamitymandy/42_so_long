@@ -27,21 +27,32 @@ void	put_perso(t_game *game, int height, int width)
 	game->x_axis = width;
 }
 
+/**
+ * The function loads and validates XPM images for the game 
+ * and assigns them to specific variables.
+ */
+void	*valid_xpm_img(t_game *game, char *xpm_name)
+{
+	void	*img;
+	int		pixels;
+
+	pixels = 60;
+	img = mlx_xpm_file_to_image(game->mlx, xpm_name, &pixels, &pixels);
+	if (!img)
+	{
+		printf("ERROR: something is wrong with xpm\n");
+		exit_window(game);
+	}
+	return (img);
+}
+
 void	put_images(t_game *game)
 {
-	int	width;
-	int	height;
-
-	game->floor = mlx_xpm_file_to_image(game->mlx, "sand.xpm", &width,
-			&height);
-	game->wall = mlx_xpm_file_to_image(game->mlx, "stone.xpm", &width,
-			&height);
-	game->perso = mlx_xpm_file_to_image(game->mlx, "ostrichXbackground.xpm",
-			&width, &height);
-	game->item = mlx_xpm_file_to_image(game->mlx, "tumb.xpm", &width,
-			&height);
-	game->exit = mlx_xpm_file_to_image(game->mlx, "holeXbackground.xpm",
-			&width, &height);
+	game->floor = valid_xpm_img(game, "sand.xpm");
+	game->wall = valid_xpm_img(game, "stone.xpm");
+	game->perso = valid_xpm_img(game, "ostrichXbackground.xpm");
+	game->item = valid_xpm_img(game, "tumb.xpm");
+	game->exit = valid_xpm_img(game, "holeXbackground.xpm");
 }
 
 void	add_graphics(t_game *game)

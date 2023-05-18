@@ -102,9 +102,10 @@ void	valid_perso(t_game *game)
 
 void	check_errors(t_game *game)
 {
-	int	height;
-	int	width;
-	int	walls;
+	char	**map;
+	int		height;
+	int		width;
+	int		walls;
 
 	height = 0;
 	width = 0;
@@ -116,6 +117,8 @@ void	check_errors(t_game *game)
 		exit_window(game);
 	}
 	valid_perso(game);
+	map = (char **)malloc(sizeof(char *) * game->map_height);
+	map_copy(game, map);
 }
 
 /*
