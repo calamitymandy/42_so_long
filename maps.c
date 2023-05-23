@@ -45,6 +45,8 @@ static int	add_line(t_game *game, char *line)
 	i = 0;
 	game->map_height++;
 	temp = (char **)malloc(sizeof(char *) * (game->map_height +1));
+	if (!temp)
+		return (0);
 	temp[game->map_height] = NULL;
 	while (i < game->map_height -1)
 	{
@@ -71,7 +73,10 @@ int	read_map(t_game *game, char **argv)
 
 	game->fd = open(argv[1], O_RDONLY);
 	if (game->fd < 0)
-		return (0);
+	{
+		printf("ERROR: can't open map\n");
+		exit_window(game);
+	}
 	while (1)
 	{
 		reading = get_next_line(game->fd);
@@ -83,8 +88,8 @@ int	read_map(t_game *game, char **argv)
 		printf("ERROR: empty map\n");
 		exit_window(game);
 	}
-	close (game->fd);
 	//game->map_width = find_width(game->map[0]);
+	close (game->fd);
 	return (1);
 }
 

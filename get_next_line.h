@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 17:23:59 by prossi            #+#    #+#             */
-/*   Updated: 2022/02/22 18:58:50 by prossi           ###   ########.fr       */
+/*   Created: 2022/12/02 13:42:19 by amdemuyn          #+#    #+#             */
+/*   Updated: 2022/12/02 18:32:40 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_strlen(const char *str);
-char	*ft_strchr(const char *s, int i);
+char	*ft_strchr(char *s, int i);
 char	*ft_strdup(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*get_next_line(int fd);

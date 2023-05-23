@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 09:56:49 by prossi            #+#    #+#             */
-/*   Updated: 2021/10/21 18:04:38 by prossi           ###   ########.fr       */
+/*   Created: 2022/12/02 14:25:50 by amdemuyn          #+#    #+#             */
+/*   Updated: 2022/12/15 16:07:15 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"	
 
-static char	*function_name(int fd, char *buf, char *backup)
+static char	*ft_line(int fd, char *buf, char *backup)
 {
 	int		read_line;
 	char	*char_temp;
@@ -69,7 +69,7 @@ char	*get_next_line(int fd)
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (0);
-	line = function_name(fd, buf, backup);
+	line = ft_line(fd, buf, backup);
 	free(buf);
 	buf = NULL;
 	if (!line)

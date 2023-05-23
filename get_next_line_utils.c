@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 09:58:54 by prossi            #+#    #+#             */
-/*   Updated: 2021/10/19 12:50:44 by prossi           ###   ########.fr       */
+/*   Created: 2022/11/29 18:23:44 by amdemuyn          #+#    #+#             */
+/*   Updated: 2022/12/12 16:55:12 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "get_next_line.h"
 
@@ -41,22 +42,22 @@ int	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 		i++;
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int i)
+char	*ft_strchr(char *s, int c)
 {
-	while (*s)
-	{
-		if (*s == i)
-			return ((char *)s);
+	if (!s)
+		return (NULL);
+	while (*s && *s != (unsigned char)c)
 		s++;
-	}
-	if (i == '\0')
+	if (*s == (unsigned char)c)
 		return ((char *)s);
-	return (0);
+	return (NULL);
 }
 
 char	*ft_strdup(const char *s)

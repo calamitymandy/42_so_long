@@ -119,6 +119,7 @@ void	check_errors(t_game *game)
 	valid_perso(game);
 	map = (char **)malloc(sizeof(char *) * game->map_height);
 	map_copy(game, map);
+	check_itinerary(game, map);
 }
 
 /*

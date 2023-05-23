@@ -6,7 +6,7 @@
 /*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:55:39 by amdemuyn          #+#    #+#             */
-/*   Updated: 2023/04/11 14:32:05 by amdemuyn         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:29:47 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		read_map(t_game *game, char **argv);
 void	check_errors(t_game *game);
 void	valid_map(char *map, char *ext);
 void	map_copy(t_game *game, char **map);
+void    check_itinerary(t_game *game, char **map);
 void	map_is_rectangle(t_game *game);
 int		find_width(char *str);
 void	put_images(t_game *game);
