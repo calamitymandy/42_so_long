@@ -49,9 +49,9 @@ void	*valid_xpm_img(t_game *game, char *xpm_name)
 void	put_images(t_game *game)
 {
 	game->floor = valid_xpm_img(game, "sand.xpm");
-	game->wall = valid_xpm_img(game, "stone.xpm");
+	game->wall = valid_xpm_img(game, "stoneXbackground.xpm");
 	game->perso = valid_xpm_img(game, "ostrichXbackground.xpm");
-	game->item = valid_xpm_img(game, "tumb.xpm");
+	game->item = valid_xpm_img(game, "smallworm.xpm");
 	game->exit = valid_xpm_img(game, "holeXbackground.xpm");
 }
 
