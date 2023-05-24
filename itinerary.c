@@ -6,28 +6,28 @@
 /*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:12:21 by amdemuyn          #+#    #+#             */
-/*   Updated: 2023/05/18 17:12:57 by amdemuyn         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:59:59 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void perso_position(t_game *game, char **map)
+static void	perso_position(t_game *game, char **map)
 {
-    while (game->itinerary_perso_y < game->map_height &&
-    map[game->itinerary_perso_y][game->itinerary_perso_x] != 'P')
+	while (game->itinerary_perso_y < game->map_height
+			&& map[game->itinerary_perso_y][game->itinerary_perso_x] != 'P')
     {
-        game->itinerary_perso_x = 1;
-        while (game->itinerary_perso_x < game->map_width &&
-        map[game->itinerary_perso_y][game->itinerary_perso_x] != 'P')
+		game->itinerary_perso_x = 1;
+		while (game->itinerary_perso_x < game->map_width 
+				&& map[game->itinerary_perso_y][game->itinerary_perso_x] != 'P')
         {
-            if (map[game->itinerary_perso_y][game->itinerary_perso_x] == 'P')
-                break ;
-            game->itinerary_perso_x++;
+			if (map[game->itinerary_perso_y][game->itinerary_perso_x] == 'P')
+				break ;
+			game->itinerary_perso_x++;
         }
-        if (map[game->itinerary_perso_y][game->itinerary_perso_x] == 'P')
-                break ;
-            game->itinerary_perso_y++;
+		if (map[game->itinerary_perso_y][game->itinerary_perso_x] == 'P')
+			break ;
+		game->itinerary_perso_y++;
     }
 }
 
@@ -36,8 +36,8 @@ static void itinerary_c(t_game *game, char **map, int x, int y)
     if (map[y][x] == 'C')
         game->itinerary_items++;
     if (map[y - 1][x] == '0' || map[y + 1][x] == '0' || map[y][x - 1] == '0' ||
-    map[x][y + 1] == '0' || map[y - 1][x] == 'C' || map[y + 1][x] == 'C' ||
-    map[y][x - 1] == 'C' || map[x][y + 1] == 'C')
+    map[y][x + 1] == '0' || map[y - 1][x] == 'C' || map[y + 1][x] == 'C' ||
+    map[y][x - 1] == 'C' || map[y][x + 1] == 'C')
         map[y][x] = '.';
     if (map[y - 1][x] == '0' || map[y - 1][x] == 'C')
         itinerary_c(game, map, x, y - 1);
@@ -55,8 +55,8 @@ static void itinerary_e(t_game *game, char **map, int x, int y)
     if (map[y][x] == 'E')
         game->itinerary_exit++;
     if (map[y - 1][x] == '0' || map[y + 1][x] == '0' || map[y][x - 1] == '0' ||
-    map[x][y + 1] == '0' || map[y - 1][x] == 'C' || map[y + 1][x] == 'C' ||
-    map[y][x - 1] == 'C' || map[x][y + 1] == 'C')
+    map[y][x + 1] == '0' || map[y - 1][x] == 'C' || map[y + 1][x] == 'C' ||
+    map[y][x - 1] == 'C' || map[y][x + 1] == 'C')
         map[y][x] = '.';
     if (map[y - 1][x] == '0' || map[y - 1][x] == 'C' || map[y - 1][x] == 'E')
         itinerary_e(game, map, x, y - 1);

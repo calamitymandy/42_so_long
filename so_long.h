@@ -52,16 +52,24 @@ typedef struct s_game
 
 }	t_game;
 
-int		exit_window(t_game *game);
-int		read_map(t_game *game, char **argv);
-void	check_errors(t_game *game);
+/*map*/
 void	valid_map(char *map, char *ext);
-void	map_copy(t_game *game, char **map);
-void    check_itinerary(t_game *game, char **map);
-void	map_is_rectangle(t_game *game);
 int		find_width(char *str);
+int		read_map(t_game *game, char **argv);
+
+void	map_copy(t_game *game, char **map);
+void	check_errors(t_game *game);
+void    check_itinerary(t_game *game, char **map);
+
+/*game*/
+int		exit_window(t_game *game);
+int		controls(int command, t_game *game);
+
+void	map_is_rectangle(t_game *game);
+
+/*graphics*/
 void	put_images(t_game *game);
 void	add_graphics(t_game *game);
-int		controls(int command, t_game *game);
+
 
 #endif
