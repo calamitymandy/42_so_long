@@ -12,6 +12,15 @@
 
 #include "so_long.h"
 
+/**
+ * The function puts an image of an item on the game window at a specific 
+ * position and increments the number of items in the game.
+ * @param height The height parameter is an integer value representing the 
+ * vertical position of the item to be placed on the game screen.
+ * @param width The width parameter is an integer value representing the
+ * horizontal position of the item to be placed on the game window. It is 
+ * multiplied by 60 to convert it to pixel coordinates.
+ */
 void	put_items(t_game *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlx, game->window, game->item, width * 60,
@@ -19,6 +28,14 @@ void	put_items(t_game *game, int height, int width)
 	game->items++;
 }
 
+/**
+ * The function puts an image of a character in a specific position on the 
+ * game window.
+ * @param height vertical position of the character. It is used to calculate
+ * the y-axis position of the character on the screen.
+ * @param width horizontal position of the character. It is used to calculate
+ * the x-coordinate of the character's position on the game window.
+ */
 void	put_perso(t_game *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlx, game->window, game->perso, width * 60,
@@ -55,6 +72,10 @@ void	put_images(t_game *game)
 	game->exit = valid_xpm_img(game, "holeXbackground.xpm");
 }
 
+/**
+ * The function adds graphics to the game window based on the contents of 
+ * the game map.
+ */
 void	add_graphics(t_game *game)
 {
 	int	height;

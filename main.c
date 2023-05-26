@@ -48,6 +48,9 @@ void	init_struct(t_game *game)
 	game->window = 0;
 }
 
+/**
+ * The function exits the game and frees allocated memory.
+ */
 int	exit_window(t_game *game)
 {
 	int	line;

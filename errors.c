@@ -12,6 +12,13 @@
 
 #include "so_long.h"
 
+/**
+ * `map_is_rectangle(game);` is a function call that checks if the game map is
+ * a rectangle, meaning that all rows have the same length. It does this by 
+ * iterating through each row of the map and comparing the length of each row 
+ * to the length of the first row. If any row has a different length
+ * than the first row, it prints an error message and exits the game. 
+ */
 void	map_is_rectangle(t_game *game)
 {
 	int	i;
@@ -31,6 +38,16 @@ void	map_is_rectangle(t_game *game)
 	}
 }
 
+/**
+ * The function checks if the outer walls of a game map are made up entirely
+ * of '1' characters.
+ * @param game a pointer to a struct, which contains information about the
+ * game being played, including the map and its dimensions.
+ * @param height The current row index being checked in the map.
+ * @param width The starting index of the column to check for walls in the 
+ * game map.
+ * @return an integer value of either 0 or 1.
+ */
 static int	check_walls(t_game *game, int height, int width)
 {
 	while (width < game->map_width)
@@ -51,9 +68,8 @@ static int	check_walls(t_game *game, int height, int width)
 }
 
 /**
- * The function checks the validity of characters in a game map 
- * and counts the number of 'P', 'C', and
- * 'E' characters.
+ * The function checks the validity of characters in a game map and counts 
+ * the number of 'P', 'C', and 'E' characters.
  */
 static void	check_count(t_game *game, int height, int width)
 {
@@ -76,9 +92,11 @@ static void	check_count(t_game *game, int height, int width)
 }
 
 /**
- * The function checks if the number of characters representing the 
- * player, items, and exit in the game map is correct and prints an 
- * error message and exits the game if it is not.
+ * The function checks if the number of characters representing the player, 
+ * items, and exit in the game map is correct. It counts the number of 
+ * 'P', 'C', and 'E' characters and compares them to the expected number of 
+ * each character. If the counts are not correct, it prints an error message 
+ * and exits the game.
  */
 void	valid_pce(t_game *game)
 {
@@ -104,6 +122,10 @@ void	valid_pce(t_game *game)
 	}
 }
 
+/**
+ * The function checks for errors in the game map and exits the game if any 
+ * errors are found.
+ */
 void	check_errors(t_game *game)
 {
 	char	**map;

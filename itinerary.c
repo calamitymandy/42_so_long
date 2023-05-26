@@ -12,6 +12,12 @@
 
 #include "so_long.h"
 
+/**
+ * The function finds the position of the character 'P' in a given map.
+ * @param map The map is a 2D array of characters. It contains information 
+ * about the location of different objects and obstacles in the game, 
+ * including the player character ('P').
+ */
 static void	perso_position(t_game *game, char **map)
 {
 	while (game->itinerary_perso_y < game->map_height
@@ -31,6 +37,18 @@ static void	perso_position(t_game *game, char **map)
 	}
 }
 
+/**
+ * The function recursively searches a map for 'C' items and updates the 
+ * game's itinerary count while replacing visited locations with '.'
+ * @param game A pointer to a struct representing the current game state.
+ * @param map A 2D array representing the game map.
+ * @param x The x-coordinate of the current position on the map.
+ * @param y The variable "y" represents the vertical coordinate of the 
+ * current position on the map being traversed in the itinerary_c function.
+ * It is used to check the values of the cells above and below the current 
+ * position, and to recursively call the itinerary_c function for those 
+ * cells if they are valid.
+ */
 static void	itinerary_c(t_game *game, char **map, int x, int y)
 {
 	if (map[y][x] == 'C')
@@ -71,6 +89,12 @@ static void	itinerary_e(t_game *game, char **map, int x, int y)
 	map[y][x] = '.';
 }
 
+/**
+ * The function checks if there is a valid itinerary for the player to pick up 
+ * all items and exit the map.
+ * @param map The "map" parameter is a pointer to a two-dimensional array of 
+ * characters, representing the game map.
+ */
 void	check_itinerary(t_game *game, char **map)
 {
 	int	line;

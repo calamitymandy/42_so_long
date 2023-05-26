@@ -61,13 +61,15 @@ static int	add_line(t_game *game, char *line)
 	return (1);
 }
 
-/* `while (1)` is an infinite loop that continues to execute until it is 
+/* 
+ * `while (1)` is an infinite loop that continues to execute until it is 
  * explicitly broken out of using a `break` statement. In this case, it 
  * is being used to read the contents of a file line by line using the 
  * `get_next_line` function and adding each line to the game map using the 
  * `add_line` function. It continues to read and add lines until there are 
  * no more lines to read, at which point it breaks out of the loop. 
- * If there is an error adding a line to the map, the loop also breaks. */
+ * If there is an error adding a line to the map, the loop also breaks.
+ */
 int	read_map(t_game *game, char **argv)
 {
 	char	*reading;
@@ -112,6 +114,10 @@ void	valid_ber(char *map_name, char *ext)
 	}
 }
 
+/**
+ * The function `map_copy` copies the contents of a 2D character array 
+ * `game->map` to another 2D character array `map` of the same dimensions.
+ */
 void	map_copy(t_game *game, char **map)
 {
 	int	i;

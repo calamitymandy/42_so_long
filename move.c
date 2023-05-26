@@ -12,6 +12,20 @@
 
 #include "so_long.h"
 
+/**
+ * The function performs a move in a game and updates the game state.
+ * @param x The x-coordinate of the player's move on the game map.
+ * @param y The variable `y` represents the y-coordinate of the player's 
+ * current position on the game map. It is used in the `do_the_move` function
+ * to check the type of tile the player is moving onto and update the game 
+ * state accordingly.
+ * 
+ * @return an integer value of 1 if the move is valid and has been executed 
+ * successfully. If the move results in the player collecting all the items 
+ * and reaching the exit, the function prints a message and exits the game.
+ * If the move is invalid, the function does not return anything and the game
+ * continues.
+ */
 static int	do_the_move(t_game *game, int x, int y)
 {
 	if (game->map[y][x] == 'E')
@@ -39,6 +53,17 @@ static int	do_the_move(t_game *game, int x, int y)
 	return (1);
 }
 
+/**
+ * The function moves the player up or down on the game map and updates the 
+ * game state accordingly.
+ * @param key The key pressed by the user to move the player character up or 
+ * down. The value of the key is compared to specific key codes 
+ * (13, 126, 1, 125) to determine the direction of movement.
+ * @param x The x-coordinate of the player's current position on the game map.
+ * @param y The current y-coordinate of the player's position on the game map.
+ * @return an integer value of 1 if the move was successful, and 0 if the move 
+ * was not possible due to a wall ('1') being in the way.
+ */
 static int	move_up_down(t_game *game, int key, int x, int y)
 {
 	int	which_move;
@@ -97,6 +122,12 @@ static int	move_right_left(t_game *game, int key, int x, int y)
 	return (1);
 }
 
+/**
+ * The function controls keyboard inputs and moves the player accordingly
+ * in a game.
+ * @param key The key code of the keyboard input that triggered the controls 
+ * function.
+ */
 int	controls(int key, t_game *game)
 {
 	int	is_ok;
