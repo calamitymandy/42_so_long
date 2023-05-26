@@ -6,7 +6,7 @@
 /*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 17:20:42 by amdemuyn          #+#    #+#             */
-/*   Updated: 2023/04/27 14:40:50 by amdemuyn         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:16:30 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	map_is_rectangle(t_game *game)
 			printf("ERROR: map is not a rectangle\n");
 			exit_window(game);
 		}
-		//game->map_width = find_width(game->map[i]);
 		i++;
 	}
 }
@@ -76,7 +75,12 @@ static void	check_count(t_game *game, int height, int width)
 		game->exit_count++;
 }
 
-void	valid_perso(t_game *game)
+/**
+ * The function checks if the number of characters representing the 
+ * player, items, and exit in the game map is correct and prints an 
+ * error message and exits the game if it is not.
+ */
+void	valid_pce(t_game *game)
 {
 	int	height;
 	int	width;
@@ -116,7 +120,7 @@ void	check_errors(t_game *game)
 		printf("ERROR: No correct walls in this map\n");
 		exit_window(game);
 	}
-	valid_perso(game);
+	valid_pce(game);
 	map = (char **)malloc(sizeof(char *) * game->map_height);
 	map_copy(game, map);
 	check_itinerary(game, map);
@@ -169,7 +173,7 @@ void	check_errors(t_game *game)
 		printf("ERROR: No walls in this map\n");
 		exit_window(game);
 	}
-	valid_perso(game);
+	valid_pce(game);
 	// TODO!!!!! Check if all rows have the same length
 	// for (int i = 1; i < game->map_height; i++) {
 	// 	if (strlen(game->map[i]) != strlen(game->map[i - 1])) {

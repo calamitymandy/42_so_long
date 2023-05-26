@@ -6,7 +6,7 @@
 /*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:15:34 by amdemuyn          #+#    #+#             */
-/*   Updated: 2023/04/27 14:39:25 by amdemuyn         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:15:27 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@ void	init_struct(t_game *game)
 	game->y_axis = 0;
 	game->counter = 0;
 	game->items = 0;
-	// added 4 counters for itinerary
 	game->itinerary_exit = 0;
 	game->itinerary_items = 0;
 	game->itinerary_perso_x = 1;
 	game->itinerary_perso_y = 1;
-	//
 	game->map = NULL;
 	game->floor = 0;
 	game->wall = 0;
@@ -78,7 +76,7 @@ int	main(int argc, char **argv)
 		printf("ERROR: number of arguments is not valid\n");
 		return (0);
 	}
-	valid_map(argv[1], ".ber");
+	valid_ber(argv[1], ".ber");
 	game = (t_game *)malloc(sizeof(t_game));
 	if (game == NULL)
 		return (0);

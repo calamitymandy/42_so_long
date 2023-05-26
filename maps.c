@@ -6,7 +6,7 @@
 /*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 16:25:27 by amdemuyn          #+#    #+#             */
-/*   Updated: 2023/04/18 16:25:56 by amdemuyn         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:17:45 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	find_width(char *str)
  * elements of `game->map` to `temp` until the second-to-last line. 
  * Finally, it adds the new line to the end of `temp`. 
  */
+
 static int	add_line(t_game *game, char *line)
 {
 	int		i;
@@ -88,12 +89,11 @@ int	read_map(t_game *game, char **argv)
 		printf("ERROR: empty map\n");
 		exit_window(game);
 	}
-	//game->map_width = find_width(game->map[0]);
 	close (game->fd);
 	return (1);
 }
 
-void	valid_map(char *map_name, char *ext)
+void	valid_ber(char *map_name, char *ext)
 {
 	int	i;
 	int	j;
