@@ -12,6 +12,16 @@
 
 #include "so_long.h"
 
+/*
+void	leaks(void)
+{
+	system("leaks so_long");
+}
+
+PUT IN MAIN:
+	atexit(leaks);
+*/
+
 void	init_struct(t_game *game)
 {
 	game->fd = 0;
@@ -52,11 +62,6 @@ int	exit_window(t_game *game)
 	exit(0);
 }
 
-void	leaks(void)
-{
-	system("leaks so_long");
-}
-
 /**
  * Initializes and runs a game using the mlx library based on a valid map file
  * provided as a command line argument.
@@ -70,7 +75,6 @@ int	main(int argc, char **argv)
 {
 	t_game	*game;
 
-	atexit(leaks);
 	if (argc != 2)
 	{
 		printf("ERROR: number of arguments is not valid\n");
