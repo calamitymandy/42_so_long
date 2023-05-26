@@ -41,8 +41,6 @@ void	map_is_rectangle(t_game *game)
 /**
  * The function checks if the outer walls of a game map are made up entirely
  * of '1' characters.
- * @param game a pointer to a struct, which contains information about the
- * game being played, including the map and its dimensions.
  * @param height The current row index being checked in the map.
  * @param width The starting index of the column to check for walls in the 
  * game map.

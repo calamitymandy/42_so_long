@@ -70,7 +70,6 @@ int	exit_window(t_game *game)
  * provided as a command line argument.
  * argv[1] is expected to contain the name of a file with a ".ber" extension, 
  * which will be used as the map for the game.
- * 
  * If the number of arguments passed to the program is not 2, then 0 is returned.
  * If the allocation of memory for the game struct fails, then 0 is returned.
  */
