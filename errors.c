@@ -13,11 +13,11 @@
 #include "so_long.h"
 
 /**
- * `map_is_rectangle(game);` is a function call that checks if the game map is
- * a rectangle, meaning that all rows have the same length. It does this by 
- * iterating through each row of the map and comparing the length of each row 
- * to the length of the first row. If any row has a different length
- * than the first row, it prints an error message and exits the game. 
+ * The function checks if the game map is a rectangle, meaning that all rows 
+ * have the same length. It does this by iterating through each row of the map
+ * and comparing the length of each row to the length of the first row. If any
+ * row has a different length than the first row, it prints an error message 
+ * and exits the game. 
  */
 void	map_is_rectangle(t_game *game)
 {
