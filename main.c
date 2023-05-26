@@ -12,7 +12,8 @@
 
 #include "so_long.h"
 
-/*
+/* 
+TO CHECK LEAKS
 void	leaks(void)
 {
 	system("leaks so_long");
