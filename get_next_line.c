@@ -51,28 +51,3 @@ char	*get_next_line(int fd)
 	str = ft_next_line(str);
 	return (line);
 }
-
-/*int	main(void)
-{
-	int		fd;
-	char	*line;
-
-	// test reading a file
-	fd = open("read_error.txt", O_RDONLY);
-
-	// test STDIN 
-	//fd = 0;
-
-	line = get_next_line(fd);
-	printf("%s", line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	close(fd);
-	return (0);
-}*/
