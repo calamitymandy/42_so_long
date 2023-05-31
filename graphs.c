@@ -57,7 +57,7 @@ void	*valid_xpm_img(t_game *game, char *xpm_name)
 	img = mlx_xpm_file_to_image(game->mlx, xpm_name, &pixels, &pixels);
 	if (!img)
 	{
-		printf("ERROR: something is wrong with xpm\n");
+		ft_printf("ERROR: something is wrong with xpm\n");
 		exit_window(game);
 	}
 	return (img);

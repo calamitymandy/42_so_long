@@ -104,7 +104,7 @@ void	check_itinerary(t_game *game, char **map)
 	itinerary_c(game, map, game->itinerary_perso_x, game->itinerary_perso_y);
 	if (game->itinerary_items != game->item_count)
 	{
-		printf("ERROR: No valid itinerary to pick items");
+		ft_printf("ERROR: No valid itinerary to pick items");
 		exit_window(game);
 	}
 	while (line < game->map_height)
@@ -117,7 +117,7 @@ void	check_itinerary(t_game *game, char **map)
 	free(map);
 	if (game->itinerary_exit != 1)
 	{
-		printf("ERROR: No valid itinerary to exit");
+		ft_printf("ERROR: No valid itinerary to exit");
 		exit_window(game);
 	}
 }

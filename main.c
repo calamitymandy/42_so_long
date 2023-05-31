@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		printf("ERROR: number of arguments is not valid\n");
+		ft_printf("ERROR: number of arguments is not valid\n");
 		return (0);
 	}
 	valid_ber(argv[1], ".ber");

@@ -32,7 +32,7 @@ static int	do_the_move(t_game *game, int x, int y)
 	{
 		if (game->items != 0)
 			return (0);
-		printf("YAY! You've got all the items\n");
+		ft_printf("YAY! You've got all the items\n");
 		exit_window(game);
 	}
 	if (game->map[y][x] == '0')
@@ -88,8 +88,8 @@ static int	move_up_down(t_game *game, int key, int x, int y)
 			return (0);
 		game->map[y - 1][x] = '0';
 	}
-	printf("How many steps: %i\n", game->counter);
-	printf("Items left: %i\n", game->items);
+	ft_printf("How many steps: %i\n", game->counter);
+	ft_printf("Items left: %i\n", game->items);
 	return (1);
 }
 
@@ -117,8 +117,8 @@ static int	move_right_left(t_game *game, int key, int x, int y)
 			return (0);
 		game->map[y][x + 1] = '0';
 	}
-	printf("How many steps: %i\n", game->counter);
-	printf("Items left: %i\n", game->items);
+	ft_printf("How many steps: %i\n", game->counter);
+	ft_printf("Items left: %i\n", game->items);
 	return (1);
 }
 

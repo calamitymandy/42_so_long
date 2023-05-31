@@ -31,7 +31,7 @@ void	map_is_rectangle(t_game *game)
 		width_of_line = find_width(game->map[i]);
 		if (width_of_line != game->map_width)
 		{
-			printf("ERROR: map is not a rectangle\n");
+			ft_printf("ERROR: map is not a rectangle\n");
 			exit_window(game);
 		}
 		i++;
@@ -78,7 +78,7 @@ static void	check_count(t_game *game, int height, int width)
 		game->map[height][width] != 'E' &&
 		game->map[height][width] != '\n')
 	{
-		printf("Not allowed: %c\n", game->map[height][width]);
+		ft_printf("Not allowed: %c\n", game->map[height][width]);
 		exit_window(game);
 	}
 	if (game->map[height][width] == 'P')
@@ -115,7 +115,7 @@ void	valid_pce(t_game *game)
 	if (!(game->perso_count == 1 && game->item_count >= 1
 			&& game->exit_count == 1))
 	{
-		printf("ERROR: perso, item or exit is wrong\n");
+		ft_printf("ERROR: perso, item or exit is wrong\n");
 		exit_window(game);
 	}
 }
@@ -137,7 +137,7 @@ void	check_errors(t_game *game)
 	walls = check_walls(game, height, width);
 	if (!walls)
 	{
-		printf("ERROR: No correct walls in this map\n");
+		ft_printf("ERROR: No correct walls in this map\n");
 		exit_window(game);
 	}
 	valid_pce(game);

@@ -77,7 +77,7 @@ int	read_map(t_game *game, char **argv)
 	game->fd = open(argv[1], O_RDONLY);
 	if (game->fd < 0)
 	{
-		printf("ERROR: can't open map\n");
+		ft_printf("ERROR: can't open map\n");
 		exit_window(game);
 	}
 	while (1)
@@ -88,7 +88,7 @@ int	read_map(t_game *game, char **argv)
 	}
 	if (game->map_height == 0 && game->map_width == 0)
 	{
-		printf("ERROR: empty map\n");
+		ft_printf("ERROR: empty map\n");
 		exit_window(game);
 	}
 	close (game->fd);
@@ -108,7 +108,7 @@ void	valid_ber(char *map_name, char *ext)
 			j++;
 		else
 		{
-			printf("ERROR: file extension must be: .ber\n");
+			ft_printf("ERROR: file extension must be: .ber\n");
 			exit(1);
 		}
 	}
