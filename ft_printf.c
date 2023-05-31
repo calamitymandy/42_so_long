@@ -12,6 +12,29 @@
 
 #include "ft_printf.h"
 
+void	ft_putchar_len(char c, int *len)
+{
+	write(1, &c, 1);
+	*len = *len +1;
+}
+
+void	ft_putstr(char *str, int *len)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+	{
+		ft_putstr("(null)", len);
+		return ;
+	}
+	while (str[i] != '\0')
+	{
+		ft_putchar_len(str[i], len);
+		i++;
+	}
+}
+
 void	ft_check_type(va_list args, const char str, int *len)
 {
 	if (str == 'c')
@@ -60,26 +83,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (len);
 }
-
-/*int	main(void)
-{
-	char	test_c = 'x';
-	char	test_percent = 'x';
-	int		test_di = -2147483648;
-	int		test_u = 214748364;
-	char	test_s[] = "va chier des bulles";
-	int		test_x = 2245845;
-	int		test_X = 22978695;
-	int		test_p = 22978695;
-	
-	ft_printf("%c\n", test_c);
-	ft_printf("%%\n", test_percent);
-	ft_printf("%d\n", test_di);
-	ft_printf("%u\n", test_u);
-	ft_printf("%s\n", test_s);
-	ft_printf("%x\n", test_x);
-	ft_printf("%X\n", test_X);
-	ft_printf("%p\n", test_p);
-	ft_printf("ceci est un test");
-	
-}*/
